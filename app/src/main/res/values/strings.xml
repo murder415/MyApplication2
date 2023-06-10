@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">My Application2</string>
+    <string name="content_description_inventory">인벤토리 아이콘</string>
+    <string name="content_description_chat">채팅</string>
+    <string name="hint_type_message">Type your message here</string>
+
+
+
+
+
+</resources>

@@ -1,0 +1,27 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/makeStoryFragment">
+
+    <fragment
+        android:id="@+id/makeStoryFragment"
+        android:name="com.example.myapplication2.MakeStoryFragment"
+        android:label="Make Story"
+        tools:layout="@layout/make_story_fragment">
+
+        <action
+            android:id="@+id/action_makeStoryFragment_to_storyFragment"
+            app:destination="@id/storyActivity" />
+
+    </fragment>
+
+    <activity
+        android:id="@+id/storyActivity"
+        android:name="com.example.myapplication2.StoryActivity"
+        android:label="Story Activity" />
+
+
+
+
+
+</navigation>

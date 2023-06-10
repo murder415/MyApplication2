@@ -1,0 +1,105 @@
+    abilities_started = False
+
+    for index, line in enumerate(lines):
+        if line.startswith('Possible Commands') or line.startswith('Commands'):
+            break
+
+        if abilities_started:
+            if "{" in line:
+                abilities_str = line[line.index('{')+1 : line.index('}')]
+                ability_parts = [ability.strip() for ability in abilities_str.split(',')]
+                for ability in ability_parts:
+                    if ':' in ability:
+                        ability_key, ability_value = ability.split(':')
+                        abilities[ability_key.strip()] = ability_value.strip()
+                        print("Ability extracted in loop 1")
+
+        if line.startswith('Abilities'):
+            abilities_started = True
+            line = lines[index-1]
+
+    abilities_started = False
+
+    if len(abilities) < 5:  # 1번 루프에서 가져오지 못한 경우에만 2번 루프 실행
+        print("Loop 2")
+        for index, line in enumerate(lines):
+            if line.startswith('Possible Commands') or line.startswith('Commands'):
+                break
+
+            if abilities_started:
+                if "(" in line:
+                    ability_parts = line.split("(")
+                    if len(ability_parts) == 2:
+                        ability = ability_parts[0].strip()
+                        value = ability_parts[1].replace(")", "").strip()
+                        abilities[ability] = value
+                        print("Ability extracted in loop 2")
+
+            if line.startswith('Abilities'):
+                abilities_started = True
+                line = lines[index-1]
+
+    abilities_started = False
+
+    if len(abilities) < 5:  # 1번, 2번 루프에서 가져오지 못한 경우에만 3번 루프 실행
+        print("Loop 3")
+        for index, line in enumerate(lines):
+            if line.startswith('Possible Commands') or line.startswith('Commands'):
+                break
+
+            if abilities_started:
+                if ":" in line:
+                    ability_parts = line.split(":")
+                    if len(ability_parts) == 2:
+                        ability = ability_parts[0].strip()
+                        value = ability_parts[1].strip()
+                        abilities[ability] = value
+                        print("Ability extracted in loop 3")
+
+            if line.startswith('Abilities'):
+                abilities_started = True
+                line = lines[index-1]
+
+    if len(abilities) < 5:  # 1번, 2번, 3번 루프에서 가져오지 못한 경우에만 4번 루프 실행
+        print("Loop 4")
+        abilities_started = False
+
+        for index, line in enumerate(lines):
+            if line.startswith('Possible Commands') or line.startswith('Commands'):
+                break
+
+            if abilities_started:
+                abilities_str = line.replace("Abilities:", "").strip()
+                ability_parts = [ability.strip() for ability in abilities_str.split(',')]
+                for ability in ability_parts:
+                    if ':' in ability:
+                        ability_key, ability_value = ability.split(':')
+                        abilities[ability_key.strip()] = ability_value.strip()
+                        print("Ability extracted in loop 4")
+
+            if line.startswith('Abilities'):
+                abilities_started = True
+                line = lines[index-1]
+
+    if len(abilities) < 5:  # 1번, 2번, 3번, 4번 루프에서 가져오지 못한 경우에만 5번 루프 실행
+        print("Loop 5")
+        abilities_started = False
+
+        for index, line in enumerate(lines):
+            if line.startswith('Possible Commands') or line.startswith('Commands'):
+                break
+
+            if abilities_started:
+                if "Abilities:" not in line:
+                    abilities_parts = line.strip().split(',')
+                    for ability_part in abilities_parts:
+                        if ':' in ability_part:
+                            ability_key, ability_value = ability_part.split(':')
+                            abilities[ability_key.strip()] = ability_value.strip()
+                            print("Ability extracted in loop 5")
+                else:
+                    abilities_started = False
+
+            if line.startswith('Abilities'):
+                abilities_started = True
+                line = lines[index-1]
