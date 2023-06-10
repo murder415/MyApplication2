@@ -52,6 +52,10 @@ build.gradle(Module :app) 의 buildpython에 Python 3.8 이 설치된 경로를 
 ## 실행 화면
 [ppt 파일로 업로드하였습니다.](https://docs.google.com/presentation/d/1eWM-0duuiCpjtNNpWgbGHTBPmDYZiRXx29EWBjFabCU/edit#slide=id.g226e19cf707_2_99)
 
+## 테스트 자료
+[ 통합 테스트 ](https://docs.google.com/spreadsheets/d/14XuDjjnrFEAAxSrMqt3MYvZPH8_ShL_hEpKLlbgKEJo/edit?usp=sharing)
+[ 단위 테스트 ](https://docs.google.com/spreadsheets/d/1wP7d5goFtZyCIQe3AfuW3ZYo8j668UXPDxoN31BCjXw/edit?usp=sharing)
+
 
 
 
